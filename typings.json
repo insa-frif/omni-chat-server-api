@@ -1,0 +1,23 @@
+{
+  "name": "omni-chat-server-api",
+  "main": "dist/node/node/main.d.ts",
+  "dependencies": {
+    "bluebird": "registry:npm/bluebird#3.3.4+20160406213700",
+    "lodash": "registry:npm/lodash#4.0.0+20160305082308"
+  },
+  "devDependencies": {},
+  "ambientDevDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160317120654",
+    "mocha": "registry:dt/mocha#2.2.5+20160317120654"
+  },
+  "ambientDependencies": {
+    "body-parser": "registry:dt/body-parser#0.0.0+20160317120654",
+    "cors": "registry:dt/cors#0.0.0+20160317120654",
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160322035842",
+    "mime": "registry:dt/mime#0.0.0+20160316155526",
+    "node": "registry:dt/node#4.0.0+20160412142033",
+    "passport": "registry:dt/passport#0.2.0+20160317120654",
+    "serve-static": "registry:dt/serve-static#1.7.1+20160104095738"
+  }
+}
