@@ -14,3 +14,7 @@ if (require.main === module) {
     console.log(`Server running at http://${HOST}:${PORT}/`);
   });
 }
+
+import {AccountModel} from "../core/data/account/account-model";
+
+console.log(AccountModel);
