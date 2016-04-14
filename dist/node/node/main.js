@@ -13,5 +13,3 @@ if (require.main === module) {
         console.log("Server running at http://" + HOST + ":" + PORT + "/");
     });
 }
-var account_model_1 = require("../core/data/account/account-model");
-console.log(account_model_1.AccountModel);
