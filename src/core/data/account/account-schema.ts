@@ -1,7 +1,7 @@
 import {StringType} from "via-type";
-import {Schema, baseSchema} from "via-schema";
+import {Schema, viaModelSchema} from "via-schema";
 
-export let accountSchema: Schema = baseSchema.extend({properties: {
+export let accountSchema = viaModelSchema.extend({properties: {
   login: {type: new StringType()},
   password: {type: new StringType()}
 }});

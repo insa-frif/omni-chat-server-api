@@ -1,7 +1,7 @@
 import * as Bluebird from "bluebird";
-import {DocumentType} from "via-type";
+import {schema, utils} from "via-core";
 
-export function readQuery(untrustedJsonData: any, querySchema: DocumentType): Bluebird<any> {
+export function readQuery(untrustedJsonData: utils.Document, querySchema: schema.Schema): Bluebird<any> {
   return Bluebird.try(() => {
     return querySchema
       .read("json", untrustedJsonData)
@@ -12,8 +12,8 @@ export function readQuery(untrustedJsonData: any, querySchema: DocumentType): Bl
             if (error !== null) {
               return Bluebird.reject(error);
             }
-          })
-          .thenReturn(data);
+            return data;
+          });
       });
   });
 }

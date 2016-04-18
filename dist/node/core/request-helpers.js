@@ -11,8 +11,8 @@ function readQuery(untrustedJsonData, querySchema) {
                 if (error !== null) {
                     return Bluebird.reject(error);
                 }
-            })
-                .thenReturn(data);
+                return data;
+            });
         });
     });
 }

@@ -7,3 +7,4 @@ export interface RegisterArguments {
 }
 export declare let registerArgumentsSchema: DocumentType;
 export declare function register(args: RegisterArguments): Bluebird<AccountModel>;
+export declare function getAll(): Bluebird<AccountModel[]>;

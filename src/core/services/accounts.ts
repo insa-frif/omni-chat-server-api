@@ -10,8 +10,8 @@ export interface RegisterArguments {
 
 export let registerArgumentsSchema = new DocumentType({
   properties: {
-    login: {type: new StringType()},
-    password: {type: new StringType()}
+    login: {type: new StringType({lowerCase: true, trimmed: true, minLength: 3, maxLength: 32})},
+    password: {type: new StringType({trimmed: true, minLength: 5, maxLength: 256})}
   }
 });
 
@@ -24,7 +24,12 @@ export function register (args: RegisterArguments): Bluebird<AccountModel> {
         password: args.password // TODO: hash, etc.
       })
     })
+    .tap(console.log)
     .then((model: AccountModel) => {
       return model.create({proxy: accountProxy});
     });
+}
+
+export function getAll (): Bluebird<AccountModel[]> {
+  return Bluebird.resolve(AccountModel.find({}, {proxy: accountProxy}));
 }

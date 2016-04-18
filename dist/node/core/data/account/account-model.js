@@ -26,8 +26,6 @@ var AccountModel = (function (_super) {
         return _super.prototype
             .getDefaultData.call(this)
             .then(function (data) {
-            data.login = "LOGIN";
-            data.password = "P4SSW0RD";
             return data;
         });
     };

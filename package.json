@@ -12,7 +12,7 @@
     "db": "mongod --storageEngine wiredTiger --dbpath ./db --port 27017"
   },
   "keywords": [
-    "orm"
+    "odm"
   ],
   "author": "",
   "license": "MIT",
@@ -23,7 +23,12 @@
     "express": "^4.13.4",
     "lodash": "^4.0.0",
     "mongodb": "^2.1.16",
-    "passport": "^0.3.2"
+    "passport": "^0.3.2",
+    "via-core": "^0.4.1",
+    "via-type": "^0.2.1",
+    "via-model": "^0.1.2",
+    "via-schema": "^0.1.2",
+    "via-proxy-mongo": "^0.2.5"
   },
   "devDependencies": {
     "chai": "^3.4.1",
