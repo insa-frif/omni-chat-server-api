@@ -1,9 +1,9 @@
 "use strict";
 var http = require("http");
-var app_1 = require("../core/app");
-var app_2 = require("../core/app");
+var app_1 = require("./app");
+var app_2 = require("./app");
 exports.app = app_2.app;
-var router_1 = require("../core/router");
+var router_1 = require("./router");
 exports.router = router_1.router;
 var HOST = "localhost";
 var PORT = 8080;

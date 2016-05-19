@@ -1,8 +1,8 @@
 import * as http from "http";
-import {app} from "../core/app";
+import {app} from "./app";
 
-export {app} from "../core/app";
-export {router} from "../core/router";
+export {app} from "./app";
+export {router} from "./router";
 
 const HOST = "localhost";
 const PORT = 8080;

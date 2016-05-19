@@ -1,9 +1,9 @@
-import {Model, generateAccessors} from "via-model";
+import {Model, StaticAccessors} from "via-model";
 import {accountSchema} from "./account-schema";
 import * as Bluebird from "bluebird";
 import {schema, model} from "via-core";
 
-@generateAccessors
+@StaticAccessors()
 export class AccountModel extends Model {
   constructor() {
     super();
@@ -12,8 +12,7 @@ export class AccountModel extends Model {
   }
 
   getDefaultData (options?: any): Bluebird<any> {
-    return super
-      .getDefaultData()
+    return super.getDefaultData()
       .then((data: any) => {
         return data;
       });

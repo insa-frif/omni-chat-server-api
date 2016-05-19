@@ -23,8 +23,7 @@ var AccountModel = (function (_super) {
         this._schema = account_schema_1.accountSchema;
     }
     AccountModel.prototype.getDefaultData = function (options) {
-        return _super.prototype
-            .getDefaultData.call(this)
+        return _super.prototype.getDefaultData.call(this)
             .then(function (data) {
             return data;
         });
@@ -35,7 +34,7 @@ var AccountModel = (function (_super) {
     AccountModel.getById = function (id, opt) { return null; };
     AccountModel.find = function (filter, opt) { return null; };
     AccountModel = __decorate([
-        via_model_1.generateAccessors, 
+        via_model_1.StaticAccessors(), 
         __metadata('design:paramtypes', [])
     ], AccountModel);
     return AccountModel;
