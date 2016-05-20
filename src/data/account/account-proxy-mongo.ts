@@ -1,5 +1,4 @@
 import * as mongodb from "mongodb";
-import * as Promise from "bluebird";
 import {accountSchema} from "./account-schema";
 import {MongoProxy} from "via-proxy-mongo";
 

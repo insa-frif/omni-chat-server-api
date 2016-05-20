@@ -4,10 +4,11 @@ import {app} from "./app";
 export {app} from "./app";
 export {router} from "./router";
 
-const HOST = "localhost";
-const PORT = 8080;
-
+// Run the server if this is the root module
 if (require.main === module) {
+  const HOST = "localhost";
+  const PORT = 8080;
+
   let server = http.createServer(app);
 
   server.listen(PORT, HOST, () => {

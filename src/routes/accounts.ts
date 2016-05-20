@@ -1,8 +1,6 @@
-import * as Bluebird from "bluebird";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import {Router} from "express-serve-static-core";
-import {dotPath} from "via-core";
 
 import {readQuery} from "../request-helpers";
 import * as accounts from "../services/accounts";
