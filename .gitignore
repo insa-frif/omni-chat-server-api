@@ -11,6 +11,7 @@ jspm_packages
 ### Build directory ###
 build
 coverage
+dist
 
 ### Temporary files ###
 # Temporary directory

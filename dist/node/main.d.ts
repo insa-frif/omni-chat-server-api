@@ -1,2 +1,2 @@
 export { app } from "./app";
-export { router } from "./router";
+export { startProxy } from "./sockets/driver-proxy";

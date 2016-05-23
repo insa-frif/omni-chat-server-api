@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "gulp test",
-    "db": "mongod --storageEngine wiredTiger --dbpath ./db --port 27017"
+    "db": "mongod --storageEngine wiredTiger --dbpath ./db --port 27017",
+	"start": "node build/node/main.js"
   },
   "keywords": [
     "chat",
