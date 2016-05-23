@@ -50,6 +50,15 @@ function handleRequest(socket, request) {
         case "start-proxy":
             responsePromise = handleStartProxyRequest(socket, context, data);
             break;
+        case "add-members-to-discussion":
+            responsePromise = handleAddMembersToDiscussionRequest(socket, context, data);
+            break;
+        case "create-discussion":
+            responsePromise = handleCreateDiscussionRequest(socket, context, data);
+            break;
+        case "get-account":
+            responsePromise = handleGetAccountRequest(socket, context, data);
+            break;
         case "get-contacts":
             responsePromise = handleGetContactsRequest(socket, context, data);
             break;
@@ -58,6 +67,18 @@ function handleRequest(socket, request) {
             break;
         case "get-discussions":
             responsePromise = handleGetDiscussionsRequest(socket, context, data);
+            break;
+        case "get-messages-from-discussion":
+            responsePromise = handleGetMessagesFromDiscussionRequest(socket, context, data);
+            break;
+        case "leave-discussion":
+            responsePromise = handleLeaveDiscussionRequest(socket, context, data);
+            break;
+        case "remove-members-from-discussion":
+            responsePromise = handleRemoveMembersFromDiscussionRequest(socket, context, data);
+            break;
+        case "send-message":
+            responsePromise = handleSendMessageRequest(socket, context, data);
             break;
         default:
             console.log("unknown-type");
@@ -113,6 +134,25 @@ function handleStartProxyRequest(socket, context, data) {
         });
     });
 }
+function handleAddMembersToDiscussionRequest(socket, context, data) {
+    return getApi(socket)
+        .then(function (api) {
+        return api.addMembersToDiscussion(data.members, data.discussion);
+    })
+        .thenReturn(null);
+}
+function handleCreateDiscussionRequest(socket, context, data) {
+    return getApi(socket)
+        .then(function (api) {
+        return api.createDiscussion(data.members, data.options);
+    });
+}
+function handleGetAccountRequest(socket, context, data) {
+    return getApi(socket)
+        .then(function (api) {
+        return api.getAccount(data.account);
+    });
+}
 function handleGetContactsRequest(socket, context, data) {
     return getApi(socket)
         .then(function (api) {
@@ -129,5 +169,31 @@ function handleGetDiscussionsRequest(socket, context, data) {
     return getApi(socket)
         .then(function (api) {
         return api.getDiscussions({});
+    });
+}
+function handleGetMessagesFromDiscussionRequest(socket, context, data) {
+    return getApi(socket)
+        .then(function (api) {
+        return api.getMessagesFromDiscussion(data.discussion, data.options);
+    });
+}
+function handleLeaveDiscussionRequest(socket, context, data) {
+    return getApi(socket)
+        .then(function (api) {
+        return api.leaveDiscussion(data.discussion);
+    })
+        .thenReturn(null);
+}
+function handleRemoveMembersFromDiscussionRequest(socket, context, data) {
+    return getApi(socket)
+        .then(function (api) {
+        return api.removeMembersFromDiscussion(data.members, data.discussion);
+    })
+        .thenReturn(null);
+}
+function handleSendMessageRequest(socket, context, data) {
+    return getApi(socket)
+        .then(function (api) {
+        return api.sendMessage(data.message, data.discussion);
     });
 }

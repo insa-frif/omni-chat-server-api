@@ -64,6 +64,15 @@ function handleRequest (socket: any, request: any) {
     case "start-proxy":
       responsePromise = handleStartProxyRequest(socket, context, data);
       break;
+    case "add-members-to-discussion":
+      responsePromise = handleAddMembersToDiscussionRequest(socket, context, data);
+      break;
+    case "create-discussion":
+      responsePromise = handleCreateDiscussionRequest(socket, context, data);
+      break;
+    case "get-account":
+      responsePromise = handleGetAccountRequest(socket, context, data);
+      break;
     case "get-contacts":
       responsePromise = handleGetContactsRequest(socket, context, data);
       break;
@@ -72,6 +81,18 @@ function handleRequest (socket: any, request: any) {
       break;
     case "get-discussions":
       responsePromise = handleGetDiscussionsRequest(socket, context, data);
+      break;
+    case "get-messages-from-discussion":
+      responsePromise = handleGetMessagesFromDiscussionRequest(socket, context, data);
+      break;
+    case "leave-discussion":
+      responsePromise = handleLeaveDiscussionRequest(socket, context, data);
+      break;
+    case "remove-members-from-discussion":
+      responsePromise = handleRemoveMembersFromDiscussionRequest(socket, context, data);
+      break;
+    case "send-message":
+      responsePromise = handleSendMessageRequest(socket, context, data);
       break;
     default:
       console.log("unknown-type");
@@ -136,6 +157,29 @@ function handleStartProxyRequest (socket: any, context: SocketContext, data: any
   });
 }
 
+
+function handleAddMembersToDiscussionRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
+  return getApi(socket)
+    .then((api: palantiri.Api) => {
+      return api.addMembersToDiscussion(data.members, data.discussion);
+    })
+    .thenReturn(null);
+}
+
+function handleCreateDiscussionRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
+  return getApi(socket)
+    .then((api: palantiri.Api) => {
+      return api.createDiscussion(data.members, data.options);
+    });
+}
+
+function handleGetAccountRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
+  return getApi(socket)
+    .then((api: palantiri.Api) => {
+      return api.getAccount(data.account);
+    });
+}
+
 function handleGetContactsRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
   return getApi(socket)
     .then((api: palantiri.Api) => {
@@ -157,3 +201,32 @@ function handleGetDiscussionsRequest (socket: any, context: SocketContext, data:
     });
 }
 
+function handleGetMessagesFromDiscussionRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
+  return getApi(socket)
+    .then((api: palantiri.Api) => {
+      return api.getMessagesFromDiscussion(data.discussion, data.options);
+    });
+}
+
+function handleLeaveDiscussionRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
+  return getApi(socket)
+    .then((api: palantiri.Api) => {
+      return api.leaveDiscussion(data.discussion);
+    })
+    .thenReturn(null);
+}
+
+function handleRemoveMembersFromDiscussionRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
+  return getApi(socket)
+    .then((api: palantiri.Api) => {
+      return api.removeMembersFromDiscussion(data.members, data.discussion);
+    })
+    .thenReturn(null);
+}
+
+function handleSendMessageRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
+  return getApi(socket)
+    .then((api: palantiri.Api) => {
+      return api.sendMessage(data.message, data.discussion);
+    });
+}
