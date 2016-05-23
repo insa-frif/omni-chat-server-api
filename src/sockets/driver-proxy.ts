@@ -64,6 +64,9 @@ function handleRequest (socket: any, request: any) {
     case "start-proxy":
       responsePromise = handleStartProxyRequest(socket, context, data);
       break;
+    case "get-contacts":
+      responsePromise = handleGetContactsRequest(socket, context, data);
+      break;
     case "get-current-user":
       responsePromise = handleGetCurrentUserRequest(socket, context, data);
       break;
@@ -135,3 +138,11 @@ function handleGetCurrentUserRequest (socket: any, context: SocketContext, data:
       return api.getCurrentUser();
     });
 }
+
+function handleGetContactsRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
+  return getApi(socket)
+    .then((api: palantiri.Api) => {
+      return api.getContacts();
+    });
+}
+
