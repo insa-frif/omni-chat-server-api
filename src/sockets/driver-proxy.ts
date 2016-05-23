@@ -70,6 +70,9 @@ function handleRequest (socket: any, request: any) {
     case "get-current-user":
       responsePromise = handleGetCurrentUserRequest(socket, context, data);
       break;
+    case "get-discussions":
+      responsePromise = handleGetCurrentUserRequest(socket, context, data);
+      break;
     default:
       console.log("unknown-type");
       responsePromise = Bluebird.reject(new Error(`Unknown request type ${requestType}`));
@@ -133,6 +136,13 @@ function handleStartProxyRequest (socket: any, context: SocketContext, data: any
   });
 }
 
+function handleGetContactsRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
+  return getApi(socket)
+    .then((api: palantiri.Api) => {
+      return api.getContacts();
+    });
+}
+
 function handleGetCurrentUserRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
   return getApi(socket)
     .then((api: palantiri.Api) => {
@@ -140,10 +150,10 @@ function handleGetCurrentUserRequest (socket: any, context: SocketContext, data:
     });
 }
 
-function handleGetContactsRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
+function handleGetDiscussionsRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
   return getApi(socket)
     .then((api: palantiri.Api) => {
-      return api.getContacts();
+      return api.getDiscussions({});
     });
 }
 
