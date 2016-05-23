@@ -71,7 +71,7 @@ function handleRequest (socket: any, request: any) {
       responsePromise = handleGetCurrentUserRequest(socket, context, data);
       break;
     case "get-discussions":
-      responsePromise = handleGetCurrentUserRequest(socket, context, data);
+      responsePromise = handleGetDiscussionsRequest(socket, context, data);
       break;
     default:
       console.log("unknown-type");
