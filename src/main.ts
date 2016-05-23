@@ -3,7 +3,6 @@ import {app} from "./app";
 import {startProxy} from "./sockets/driver-proxy";
 
 export {app} from "./app";
-export {router} from "./router";
 export {startProxy} from "./sockets/driver-proxy";
 
 // Run the server if this is the root module

@@ -92,6 +92,7 @@ function handleRequest (socket: any, request: any) {
       (error: Error) => {
         console.log(`An error happened while handling request ${requestId}@${socket.id}`);
         console.log(error.message);
+        console.error(error.stack);
         socket.emit("request-response", {
           id: requestId,
           error: error.message,
