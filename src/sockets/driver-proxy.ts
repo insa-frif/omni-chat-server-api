@@ -152,11 +152,17 @@ function handleStartProxyRequest (socket: any, context: SocketContext, data: any
     return Bluebird.resolve(connection.connect())
       .then((api: palantiri.Api) => {
         context.api = api;
+        api.on("message", (ev: palantiri.Api.events.MessageEvent) => {
+          console.log(ev);
+          socket.emit("event", {
+            type: "message",
+            data: ev
+          });
+        });
         return null;
       });
   });
 }
-
 
 function handleAddMembersToDiscussionRequest (socket: any, context: SocketContext, data: any): Bluebird<any> {
   return getApi(socket)
