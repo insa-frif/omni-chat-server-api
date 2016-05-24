@@ -1,6 +1,6 @@
 {
   "name": "omni-chat-server-api",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "The server API for omni-chat",
   "main": "dist/node/node/main.js",
   "repository": {
