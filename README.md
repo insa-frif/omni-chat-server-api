@@ -1,5 +1,7 @@
 # Omni-chat server API
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ocilo/omni-chat-server-api.svg)](https://greenkeeper.io/)
+
 ## Description
 
 Express middleware to handle the omni-chat API.
